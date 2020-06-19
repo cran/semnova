@@ -6,7 +6,7 @@ library(semnova)
 test_that("lgc function works", {
     set.seed(323412431)
 
-    data <- get_test_data()
+    data("semnova_test_data", package = "semnova")
 
     mmodel <- create_mmodel(
         A1B1 = "var1",
@@ -37,7 +37,13 @@ test_that("lgc function works", {
         nrow = 6
     )
 
-    fit_lgc <- lgc(data, mmodel, C_matrix, hypotheses)
+    fit_lgc <-
+        lgc(
+            data = semnova_test_data,
+            mmodel = mmodel,
+            C_matrix = C_matrix,
+            hypotheses = hypotheses
+        )
 
     expect_equal(
         fit_lgc@hypotheses[[4]]$multiv_tests$tests[1, "Pr(>F)"],
@@ -48,7 +54,7 @@ test_that("lgc function works", {
 test_that("semnova function works", {
     set.seed(323412431)
 
-    data <- get_test_data()
+    data("semnova_test_data", package = "semnova")
 
     idata  <-
         expand.grid(A = c("A1", "A2", "A3"), B = c("B1", "B2"))
@@ -66,7 +72,7 @@ test_that("semnova function works", {
     fit_semnova <-
         semnova(
             formula = cbind(A1B1, A2B1, A3B1, A1B2, A2B2, A3B2) ~ 1,
-            data = data,
+            data = semnova_test_data,
             idata = idata,
             idesign = ~ A * B,
             mmodel = mmodel

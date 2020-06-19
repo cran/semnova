@@ -1,7 +1,7 @@
 Package: semnova
 Type: Package
 Title: Latent Repeated Measures ANOVA
-Version: 0.1-5
+Version: 0.1-6
 Authors@R: c(person(given = "Benedikt", family = "Langenberg",
                     role  = c("aut", "cre"),
                     email = "benedikt.langenberg@gmail.com"),
@@ -26,6 +26,6 @@ LazyData: true
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-06-09 12:46:33 UTC; benedicens
+Packaged: 2020-06-18 13:31:54 UTC; benedicens
 Repository: CRAN
-Date/Publication: 2020-06-14 14:50:06 UTC
+Date/Publication: 2020-06-19 05:50:07 UTC

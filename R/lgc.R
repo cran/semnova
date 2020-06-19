@@ -128,7 +128,7 @@ new_lgc <- function() {
 #'
 #' set.seed(323412431)
 #'
-#' data <- get_test_data()
+#' data("semnova_test_data", package = "semnova")
 #'
 #' mmodel <- create_mmodel(
 #'     A1B1 = "var1",
@@ -157,7 +157,7 @@ new_lgc <- function() {
 #'     nrow=6
 #' )
 #'
-#' fit_lgc <- lgc(data, mmodel, C_matrix, hypotheses)
+#' fit_lgc <- lgc(data = semnova_test_data, mmodel, C_matrix, hypotheses)
 #' summary(fit_lgc)
 #'
 lgc <- function(

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Vignette Author" />
 
-<meta name="date" content="2020-06-09" />
+<meta name="date" content="2020-06-18" />
 
 <title>semnova</title>
 
@@ -301,7 +301,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">semnova</h1>
 <h4 class="author">Vignette Author</h4>
-<h4 class="date">2020-06-09</h4>
+<h4 class="date">2020-06-18</h4>
 
 
 
@@ -312,7 +312,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb1-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">323412431</span>)</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">data &lt;-<span class="st"> </span><span class="kw">get_test_data</span>()</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">data</span>(<span class="st">&quot;semnova_test_data&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;semnova&quot;</span>)</a>
 <a class="sourceLine" id="cb1-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7">idata &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">A =</span> <span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>, <span class="st">&quot;A3&quot;</span>), <span class="dt">B =</span> <span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>, <span class="st">&quot;B2&quot;</span>))</a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"></a>
@@ -329,7 +329,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb1-19" data-line-number="19">fit_semnova &lt;-</a>
 <a class="sourceLine" id="cb1-20" data-line-number="20"><span class="st">    </span><span class="kw">semnova</span>(</a>
 <a class="sourceLine" id="cb1-21" data-line-number="21">        <span class="dt">formula =</span> <span class="kw">cbind</span>(A1B1, A2B1, A3B1, A1B2, A2B2, A3B2) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb1-22" data-line-number="22">        <span class="dt">data =</span> data,</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">        <span class="dt">data =</span> semnova_test_data,</a>
 <a class="sourceLine" id="cb1-23" data-line-number="23">        <span class="dt">idata =</span> idata,</a>
 <a class="sourceLine" id="cb1-24" data-line-number="24">        <span class="dt">idesign =</span> <span class="op">~</span><span class="st"> </span>A <span class="op">*</span><span class="st"> </span>B,</a>
 <a class="sourceLine" id="cb1-25" data-line-number="25">        <span class="dt">mmodel =</span> mmodel</a>
@@ -433,7 +433,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">323412431</span>)</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">data &lt;-<span class="st"> </span><span class="kw">get_test_data</span>()</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">data</span>(<span class="st">&quot;semnova_test_data&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;semnova&quot;</span>)</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7">mmodel &lt;-<span class="st"> </span><span class="kw">create_mmodel</span>(</a>
 <a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="dt">A1B1 =</span> <span class="st">&quot;var1&quot;</span>,</a>
@@ -464,82 +464,88 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb2-33" data-line-number="33">    <span class="dt">nrow =</span> <span class="dv">6</span></a>
 <a class="sourceLine" id="cb2-34" data-line-number="34">)</a>
 <a class="sourceLine" id="cb2-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb2-36" data-line-number="36">fit_lgc &lt;-<span class="st"> </span><span class="kw">lgc</span>(data, mmodel, C_matrix, hypotheses)</a>
-<a class="sourceLine" id="cb2-37" data-line-number="37"></a>
-<a class="sourceLine" id="cb2-38" data-line-number="38"><span class="kw">summary</span>(fit_lgc)</a>
-<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt; ------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="co">#&gt; term: Intercept</span></a>
-<a class="sourceLine" id="cb2-42" data-line-number="42"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-43" data-line-number="43"><span class="co">#&gt; Response transformation matrix:</span></a>
-<a class="sourceLine" id="cb2-44" data-line-number="44"><span class="co">#&gt;   V1</span></a>
-<a class="sourceLine" id="cb2-45" data-line-number="45"><span class="co">#&gt; 1  1</span></a>
-<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt; 2  1</span></a>
-<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt; 3  1</span></a>
-<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt; 4  1</span></a>
-<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#&gt; 5  1</span></a>
-<a class="sourceLine" id="cb2-50" data-line-number="50"><span class="co">#&gt; 6  1</span></a>
-<a class="sourceLine" id="cb2-51" data-line-number="51"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-52" data-line-number="52"><span class="co">#&gt; multiv. tests:</span></a>
-<a class="sourceLine" id="cb2-53" data-line-number="53"><span class="co">#&gt;       Df test stat approx F num Df den Df Pr(&gt;F)</span></a>
-<a class="sourceLine" id="cb2-54" data-line-number="54"><span class="co">#&gt; Wald   1   0.09447 0.094467      1     99 0.7592</span></a>
-<a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt; Wilks  1   0.99906 0.093522      1     99 0.7604</span></a>
-<a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; ------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; term: A</span></a>
-<a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; Response transformation matrix:</span></a>
-<a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt;   V1 V2</span></a>
-<a class="sourceLine" id="cb2-63" data-line-number="63"><span class="co">#&gt; 1  1  0</span></a>
-<a class="sourceLine" id="cb2-64" data-line-number="64"><span class="co">#&gt; 2  0  1</span></a>
-<a class="sourceLine" id="cb2-65" data-line-number="65"><span class="co">#&gt; 3 -1 -1</span></a>
-<a class="sourceLine" id="cb2-66" data-line-number="66"><span class="co">#&gt; 4  1  0</span></a>
-<a class="sourceLine" id="cb2-67" data-line-number="67"><span class="co">#&gt; 5  0  1</span></a>
-<a class="sourceLine" id="cb2-68" data-line-number="68"><span class="co">#&gt; 6 -1 -1</span></a>
-<a class="sourceLine" id="cb2-69" data-line-number="69"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-70" data-line-number="70"><span class="co">#&gt; multiv. tests:</span></a>
-<a class="sourceLine" id="cb2-71" data-line-number="71"><span class="co">#&gt;       Df test stat approx F num Df den Df Pr(&gt;F)</span></a>
-<a class="sourceLine" id="cb2-72" data-line-number="72"><span class="co">#&gt; Wald   2    3.4527   1.7264      2    198 0.1806</span></a>
-<a class="sourceLine" id="cb2-73" data-line-number="73"><span class="co">#&gt; Wilks  1    0.9666   1.6919      2     98 0.1895</span></a>
-<a class="sourceLine" id="cb2-74" data-line-number="74"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-75" data-line-number="75"><span class="co">#&gt; ------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-76" data-line-number="76"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-77" data-line-number="77"><span class="co">#&gt; term: B</span></a>
-<a class="sourceLine" id="cb2-78" data-line-number="78"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-79" data-line-number="79"><span class="co">#&gt; Response transformation matrix:</span></a>
-<a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt;   V1</span></a>
-<a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt; 1  1</span></a>
-<a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt; 2  1</span></a>
-<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt; 3  1</span></a>
-<a class="sourceLine" id="cb2-84" data-line-number="84"><span class="co">#&gt; 4 -1</span></a>
-<a class="sourceLine" id="cb2-85" data-line-number="85"><span class="co">#&gt; 5 -1</span></a>
-<a class="sourceLine" id="cb2-86" data-line-number="86"><span class="co">#&gt; 6 -1</span></a>
-<a class="sourceLine" id="cb2-87" data-line-number="87"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-88" data-line-number="88"><span class="co">#&gt; multiv. tests:</span></a>
-<a class="sourceLine" id="cb2-89" data-line-number="89"><span class="co">#&gt;       Df test stat approx F num Df den Df Pr(&gt;F)</span></a>
-<a class="sourceLine" id="cb2-90" data-line-number="90"><span class="co">#&gt; Wald   1   0.26776  0.26776      1     99 0.6060</span></a>
-<a class="sourceLine" id="cb2-91" data-line-number="91"><span class="co">#&gt; Wilks  1   0.99733  0.26509      1     99 0.6078</span></a>
-<a class="sourceLine" id="cb2-92" data-line-number="92"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-93" data-line-number="93"><span class="co">#&gt; ------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-94" data-line-number="94"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-95" data-line-number="95"><span class="co">#&gt; term: AB</span></a>
-<a class="sourceLine" id="cb2-96" data-line-number="96"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-97" data-line-number="97"><span class="co">#&gt; Response transformation matrix:</span></a>
-<a class="sourceLine" id="cb2-98" data-line-number="98"><span class="co">#&gt;   V1 V2</span></a>
-<a class="sourceLine" id="cb2-99" data-line-number="99"><span class="co">#&gt; 1  1  0</span></a>
-<a class="sourceLine" id="cb2-100" data-line-number="100"><span class="co">#&gt; 2  0  1</span></a>
-<a class="sourceLine" id="cb2-101" data-line-number="101"><span class="co">#&gt; 3 -1 -1</span></a>
-<a class="sourceLine" id="cb2-102" data-line-number="102"><span class="co">#&gt; 4 -1  0</span></a>
-<a class="sourceLine" id="cb2-103" data-line-number="103"><span class="co">#&gt; 5  0 -1</span></a>
-<a class="sourceLine" id="cb2-104" data-line-number="104"><span class="co">#&gt; 6  1  1</span></a>
-<a class="sourceLine" id="cb2-105" data-line-number="105"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-106" data-line-number="106"><span class="co">#&gt; multiv. tests:</span></a>
-<a class="sourceLine" id="cb2-107" data-line-number="107"><span class="co">#&gt;       Df test stat approx F num Df den Df Pr(&gt;F)</span></a>
-<a class="sourceLine" id="cb2-108" data-line-number="108"><span class="co">#&gt; Wald   2   1.05674  0.52837      2    198 0.5904</span></a>
-<a class="sourceLine" id="cb2-109" data-line-number="109"><span class="co">#&gt; Wilks  1   0.98954  0.51780      2     98 0.5975</span></a>
-<a class="sourceLine" id="cb2-110" data-line-number="110"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-111" data-line-number="111"><span class="co">#&gt; ------------------------------------------</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-36" data-line-number="36">fit_lgc &lt;-</a>
+<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="st">    </span><span class="kw">lgc</span>(</a>
+<a class="sourceLine" id="cb2-38" data-line-number="38">        <span class="dt">data =</span> semnova_test_data,</a>
+<a class="sourceLine" id="cb2-39" data-line-number="39">        <span class="dt">mmodel =</span> mmodel,</a>
+<a class="sourceLine" id="cb2-40" data-line-number="40">        <span class="dt">C_matrix =</span> C_matrix,</a>
+<a class="sourceLine" id="cb2-41" data-line-number="41">        <span class="dt">hypotheses =</span> hypotheses</a>
+<a class="sourceLine" id="cb2-42" data-line-number="42">    )</a>
+<a class="sourceLine" id="cb2-43" data-line-number="43"></a>
+<a class="sourceLine" id="cb2-44" data-line-number="44"><span class="kw">summary</span>(fit_lgc)</a>
+<a class="sourceLine" id="cb2-45" data-line-number="45"><span class="co">#&gt; ------------------------------------------</span></a>
+<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt; term: Intercept</span></a>
+<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#&gt; Response transformation matrix:</span></a>
+<a class="sourceLine" id="cb2-50" data-line-number="50"><span class="co">#&gt;   V1</span></a>
+<a class="sourceLine" id="cb2-51" data-line-number="51"><span class="co">#&gt; 1  1</span></a>
+<a class="sourceLine" id="cb2-52" data-line-number="52"><span class="co">#&gt; 2  1</span></a>
+<a class="sourceLine" id="cb2-53" data-line-number="53"><span class="co">#&gt; 3  1</span></a>
+<a class="sourceLine" id="cb2-54" data-line-number="54"><span class="co">#&gt; 4  1</span></a>
+<a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt; 5  1</span></a>
+<a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; 6  1</span></a>
+<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; multiv. tests:</span></a>
+<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt;       Df test stat approx F num Df den Df Pr(&gt;F)</span></a>
+<a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt; Wald   1   0.09447 0.094467      1     99 0.7592</span></a>
+<a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; Wilks  1   0.99906 0.093522      1     99 0.7604</span></a>
+<a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-63" data-line-number="63"><span class="co">#&gt; ------------------------------------------</span></a>
+<a class="sourceLine" id="cb2-64" data-line-number="64"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-65" data-line-number="65"><span class="co">#&gt; term: A</span></a>
+<a class="sourceLine" id="cb2-66" data-line-number="66"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-67" data-line-number="67"><span class="co">#&gt; Response transformation matrix:</span></a>
+<a class="sourceLine" id="cb2-68" data-line-number="68"><span class="co">#&gt;   V1 V2</span></a>
+<a class="sourceLine" id="cb2-69" data-line-number="69"><span class="co">#&gt; 1  1  0</span></a>
+<a class="sourceLine" id="cb2-70" data-line-number="70"><span class="co">#&gt; 2  0  1</span></a>
+<a class="sourceLine" id="cb2-71" data-line-number="71"><span class="co">#&gt; 3 -1 -1</span></a>
+<a class="sourceLine" id="cb2-72" data-line-number="72"><span class="co">#&gt; 4  1  0</span></a>
+<a class="sourceLine" id="cb2-73" data-line-number="73"><span class="co">#&gt; 5  0  1</span></a>
+<a class="sourceLine" id="cb2-74" data-line-number="74"><span class="co">#&gt; 6 -1 -1</span></a>
+<a class="sourceLine" id="cb2-75" data-line-number="75"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-76" data-line-number="76"><span class="co">#&gt; multiv. tests:</span></a>
+<a class="sourceLine" id="cb2-77" data-line-number="77"><span class="co">#&gt;       Df test stat approx F num Df den Df Pr(&gt;F)</span></a>
+<a class="sourceLine" id="cb2-78" data-line-number="78"><span class="co">#&gt; Wald   2    3.4527   1.7264      2    198 0.1806</span></a>
+<a class="sourceLine" id="cb2-79" data-line-number="79"><span class="co">#&gt; Wilks  1    0.9666   1.6919      2     98 0.1895</span></a>
+<a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt; ------------------------------------------</span></a>
+<a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt; term: B</span></a>
+<a class="sourceLine" id="cb2-84" data-line-number="84"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-85" data-line-number="85"><span class="co">#&gt; Response transformation matrix:</span></a>
+<a class="sourceLine" id="cb2-86" data-line-number="86"><span class="co">#&gt;   V1</span></a>
+<a class="sourceLine" id="cb2-87" data-line-number="87"><span class="co">#&gt; 1  1</span></a>
+<a class="sourceLine" id="cb2-88" data-line-number="88"><span class="co">#&gt; 2  1</span></a>
+<a class="sourceLine" id="cb2-89" data-line-number="89"><span class="co">#&gt; 3  1</span></a>
+<a class="sourceLine" id="cb2-90" data-line-number="90"><span class="co">#&gt; 4 -1</span></a>
+<a class="sourceLine" id="cb2-91" data-line-number="91"><span class="co">#&gt; 5 -1</span></a>
+<a class="sourceLine" id="cb2-92" data-line-number="92"><span class="co">#&gt; 6 -1</span></a>
+<a class="sourceLine" id="cb2-93" data-line-number="93"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-94" data-line-number="94"><span class="co">#&gt; multiv. tests:</span></a>
+<a class="sourceLine" id="cb2-95" data-line-number="95"><span class="co">#&gt;       Df test stat approx F num Df den Df Pr(&gt;F)</span></a>
+<a class="sourceLine" id="cb2-96" data-line-number="96"><span class="co">#&gt; Wald   1   0.26776  0.26776      1     99 0.6060</span></a>
+<a class="sourceLine" id="cb2-97" data-line-number="97"><span class="co">#&gt; Wilks  1   0.99733  0.26509      1     99 0.6078</span></a>
+<a class="sourceLine" id="cb2-98" data-line-number="98"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-99" data-line-number="99"><span class="co">#&gt; ------------------------------------------</span></a>
+<a class="sourceLine" id="cb2-100" data-line-number="100"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-101" data-line-number="101"><span class="co">#&gt; term: AB</span></a>
+<a class="sourceLine" id="cb2-102" data-line-number="102"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-103" data-line-number="103"><span class="co">#&gt; Response transformation matrix:</span></a>
+<a class="sourceLine" id="cb2-104" data-line-number="104"><span class="co">#&gt;   V1 V2</span></a>
+<a class="sourceLine" id="cb2-105" data-line-number="105"><span class="co">#&gt; 1  1  0</span></a>
+<a class="sourceLine" id="cb2-106" data-line-number="106"><span class="co">#&gt; 2  0  1</span></a>
+<a class="sourceLine" id="cb2-107" data-line-number="107"><span class="co">#&gt; 3 -1 -1</span></a>
+<a class="sourceLine" id="cb2-108" data-line-number="108"><span class="co">#&gt; 4 -1  0</span></a>
+<a class="sourceLine" id="cb2-109" data-line-number="109"><span class="co">#&gt; 5  0 -1</span></a>
+<a class="sourceLine" id="cb2-110" data-line-number="110"><span class="co">#&gt; 6  1  1</span></a>
+<a class="sourceLine" id="cb2-111" data-line-number="111"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-112" data-line-number="112"><span class="co">#&gt; multiv. tests:</span></a>
+<a class="sourceLine" id="cb2-113" data-line-number="113"><span class="co">#&gt;       Df test stat approx F num Df den Df Pr(&gt;F)</span></a>
+<a class="sourceLine" id="cb2-114" data-line-number="114"><span class="co">#&gt; Wald   2   1.05674  0.52837      2    198 0.5904</span></a>
+<a class="sourceLine" id="cb2-115" data-line-number="115"><span class="co">#&gt; Wilks  1   0.98954  0.51780      2     98 0.5975</span></a>
+<a class="sourceLine" id="cb2-116" data-line-number="116"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-117" data-line-number="117"><span class="co">#&gt; ------------------------------------------</span></a></code></pre></div>
 </div>
 
 
